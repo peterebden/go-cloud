@@ -79,20 +79,20 @@ import (
 var endPoint = "pubsub.googleapis.com:443"
 
 var sendBatcherOpts = &batcher.Options{
-	MaxBatchSize: 1000, // The PubSub service limits the number of messages in a single Publish RPC
+	MaxBatchSize: 1, // The PubSub service limits the number of messages in a single Publish RPC
 	MaxHandlers:  2,
 }
 
 var recvBatcherOpts = &batcher.Options{
 	// GCP Pub/Sub returns at most 1000 messages per RPC.
-	MaxBatchSize: 1000,
+	MaxBatchSize: 1,
 	MaxHandlers:  10,
 }
 
 var ackBatcherOpts = &batcher.Options{
 	// The PubSub service limits the size of Acknowledge/ModifyAckDeadline RPCs.
 	// (E.g., "Request payload size exceeds the limit: 524288 bytes.").
-	MaxBatchSize: 1000,
+	MaxBatchSize: 1,
 	MaxHandlers:  2,
 }
 
